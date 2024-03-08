@@ -1,0 +1,43 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css");
+
+
+
+html, body, [class*="css"] {
+    font-family: "Pretendard Variable";
+
+}
+
+.st-ae {
+    font-family: "Pretendard Variable";
+}
+
+*, *::before, *::after {
+    font-family: 'Pretendard Variable';
+}
+
+section.main > div {max-width:100rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+        }
+
+
+
+
+div[data-testid="stSidebar"] {
+    width: 800px;
+    }  
+    
+    [data-testid=stImage]{
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    
+    [data-testid="stFormSubmitButton"]{
+        text-align: center;
+    }
+
+
+    
