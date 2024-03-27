@@ -61,8 +61,7 @@ col1, col2 = st.columns([8,7])
 with col1:
         c1, c2= st.columns([1.5,8])
         with c1:
-            st.image('image/thumbnail.png',width=120)
-            # st.image('image/naver_webtoon_logo.png',width=120)
+            st.image('image/thumbnail.png',width=120) 
             with st.form(key ='searchform'):
                 submit_search = st.form_submit_button('Load data')
 
@@ -113,24 +112,6 @@ def load_data(data_folder):
 
 
 
-
-
-# 데이터 불러오기 side_bar
-# with st.sidebar:
-    # st.image('https://image-comic.pstatic.net/webtoon/811721/thumbnail/thumbnail_IMAG21_9a2a959a-666b-4156-8e4f-db64dfe319c6.jpg',width=200)
-    # with st.form(key ='searchform'):
-    #     col1,col2= st.columns([2,2]) 
-    #     with col1:         
-    #         st.subheader("webtoon dataset")
-        
-    #     with col2:    
-    #         submit_search = st.form_submit_button('data')
-    #         scraping = st.form_submit_button('comment')
-
-# 데이터 불러오기
-
-
-
 if submit_search:
     comment_data = load_data(data_folder[0])
     main_data = load_data(data_folder[1])
@@ -146,183 +127,6 @@ if submit_search:
 if hasattr(st.session_state, 'main_data'):
     main_data = st.session_state.main_data
     main_data['chapter'] = main_data['episode'].apply(lambda x: re.search(r'\b(\d+)\D', x).group(1) if re.search(r'\b(\d+)\D', x) else None).astype(int)
-
-    # 날짜 컬럼을 datetime 형식으로 변환 
-    # main_data['upload_at'] = pd.to_datetime(main_data['upload_at'], errors='coerce')
-
-
-    # main_data['upload_at'] = pd.to_datetime(main_data['upload_at'],format='%Y-%m-%d')
-    # main_data['year'] = main_data['upload_at'].dt.year.astype(str)
-    # main_data['month'] = main_data['upload_at'].dt.month.astype(str)
-
-
-    # @st.cache_resource
-    # def data_diff (data):
-    #     # data = pd.concat(dfs) if dfs else ''
-    #     data = data.sort_values(by=['upload_at', 'down_at'])
-
-    #     data['like_count'] = data['like_count'].str.replace(',', '').astype(int)
-    #     data['comment_count'] = data['comment_count'].str.replace(',', '').astype(int)
-
-    #     data['user_response'] = data['like_count'] + data['comment_count'] + data['score_count']
-
-
-
-    #     data['down_at'] = pd.to_datetime(data['down_at']).dt.strftime('%Y-%m-%d')
-    #     data['down_at'] = pd.to_datetime(data['down_at'], format='%Y-%m-%d')
-    #     # data = data[data['down_at'] > '2023-10-01'] ################################################ 
-
-    #     # year 과 month 를 구분해주자.
-    #     # data['year'] = data['upload_at'].dt.year.astype(str)
-    #     # data['month'] = data['upload_at'].dt.month.astype(str)
-
-    #     # 전일 대비 조회수및 좋아요 컬럼
-    #     data['prev_user_response'] = data.groupby(['chapter','upload_at'])['user_response'].shift()
-    
-    #     # data.loc[(data['down_at'] - data['upload_at'] ).dt.days == 1, 'user_response'] = 0
-
-    #     data['response_diff'] = data['user_response'] - data['prev_user_response']
-
-    #     # data['down_at'] = pd.to_datetime(data['down_at']).dt.strftime('%Y-%m-%d')    
-
-    
-    #     return data
-    
-    # data = data_diff(main_data)
-    # st.write(data)
-
-
-    # # 일별 독자들의 참여도 (좋아요+댓글+평점 참가를 합친 값)
-    # response_df = data.groupby(['down_at']).agg(
-    #    total_response = pd.NamedAgg(column='response_diff', aggfunc='sum')
-    # ).reset_index()
-
-
-    # nivo_data_response = []
-    # for index, row in response_df.iterrows():
-    #     nivo_data_response.append({'x': row['down_at'], 'y': row['total_response']})
-
-    # nivo_data_response = [{
-    #     "id": "response",
-    #     "data": nivo_data_response
-    # }]
-    # today_response = response_df['total_response'].iloc[-1]
-    # with st.container():       
-    #         with elements("response_by_day"):
-    #             layout = [
-    #                 dashboard.Item("item_1", 0, 0, 4, 2),
-
-    #             ]
-    #             with dashboard.Grid(layout):
-
-    #                 mui.Box( # subscribe
-    #                     children = [
-    #                         mui.Typography(
-    #                             "Today Count",
-    #                             variant="body2",
-    #                             sx={"fontFamily":"Pretendard Variable",
-    #                                 "font-size": "18px",
-    #                                 "pt":2} ,
-    #                         ),
-
-    #                         mui.Typography(
-    #                             f"{today_response}",
-    #                             variant="body2",
-    #                             sx={
-    #                                 "font-size": "32px",
-    #                                 "fontWeight":"bold",
-    #                                 "padding-top": 0
-    #                                 } ,
-                                
-    #                         ),
-                            
-    #                         mui.Divider(),
-
-    #                         mui.Typography(
-    #                             '일별 독자 반응(좋아요+댓글+평점참여)',
-    #                                 variant="body2",
-    #                                 color="text.secondary",
-    #                                 sx={'pt':1,"font-size": "10px"}
-    #                         ),
-
-    #                         nivo.Line(
-    #                             data= nivo_data_response,
-    #                             margin={'top': 0, 'right': 30, 'bottom': 150, 'left': 60},
-    #                             # xScale={'type': 'point',
-    #                             #         },
-
-    #                             curve="monotoneX",
-    #                             axisTop=None,
-    #                             axisRight=None,
-    #                             axisBottom={
-    #                                 'format': '%m-%d',  # '%Y-%m-%d'
-    #                                 'legendOffset': -12,
-    #                                 'tickValues': 'every 3 days'
-    #                             },
-    #                             xFormat="time:%Y-%m-%d",
-    #                             xScale={
-    #                                 'format': '%Y-%m-%d',
-    #                                 'precision': 'day',
-    #                                 'type': 'time',
-    #                                 # 'useUTC': False
-    #                             },
-    #                             colors= {'scheme': 'accent'},
-
-    #                             enableGridX = False,
-    #                             enableGridY = False,
-    #                             enableArea = True,
-    #                             areaOpacity = 0.2,
-    #                             # enablePointLabel=True,
-    #                             # pointLabel='y',
-    #                             lineWidth=2,
-    #                             pointSize=3,
-    #                             pointColor='white',
-    #                             pointBorderWidth=0.5,
-    #                             pointBorderColor={'from': 'serieColor'},
-    #                             pointLabelYOffset=-12,
-    #                             useMesh=True,
-    #                             legends=[
-    #                                         {
-    #                                         'anchor': 'top-left',
-    #                                         'direction': 'column',
-    #                                         'justify': False,
-    #                                         # 'translateX': -30,
-    #                                         # 'translateY': -200,
-    #                                         'itemsSpacing': 0,
-    #                                         'itemDirection': 'left-to-right',
-    #                                         'itemWidth': 80,
-    #                                         'itemHeight': 15,
-    #                                         'itemOpacity': 0.75,
-    #                                         'symbolSize': 12,
-    #                                         'symbolShape': 'circle',
-    #                                         'symbolBorderColor': 'rgba(0, 0, 0, .5)',
-    #                                         'effects': [
-    #                                                 {
-    #                                                 'on': 'hover',
-    #                                                 'style': {
-    #                                                     'itemBackground': 'rgba(0, 0, 0, .03)',
-    #                                                     'itemOpacity': 1
-    #                                                     }
-    #                                                 }
-    #                                             ]
-    #                                         }
-    #                                     ],                            
-    #                             theme={
-    #                                     # "background-color": "rgba(158, 60, 74, 0.2)",
-    #                                     "textColor": "black",
-    #                                     "tooltip": {
-    #                                         "container": {
-    #                                             "background": "#3a3c4a",
-    #                                             "color": "white",
-    #                                         }
-    #                                     }
-    #                                 },                                           
-    #                             animate= False)
-    #                             ]                                
-    #                         ,key="item_1",sx={"text-align":"center"})
-
-
-
 
 
 if hasattr(st.session_state, 'comment_data'):
@@ -423,10 +227,6 @@ if hasattr(st.session_state, 'comment_data'):
 
 
 
-
-        #     st.write(f''' 현재 {unique_user}명의 독자가 웹툰을 보고 댓글을 남겼어요. '개그' 장르의 다른 작품에 비해 % 높은 수치입니다!''')
-
-
         # 활성화 지표별 시각화 함수
         def user_active_chart (df,title,color):
             title = indication
@@ -442,8 +242,7 @@ if hasattr(st.session_state, 'comment_data'):
 
 
         col1,col2 = st.columns([3,1])
-        with col1:
-            
+        with col1:            
             user_active_chart(df,'📊 Daily Active User','#75D060')
     
 
@@ -489,7 +288,6 @@ if hasattr(st.session_state, 'comment_data'):
 
 
 # ------------------------------------------------------ 댓글 데이터를 기준으로 유저 고착도를 구해보자 --------------------------------------------- #
-
 
 
 
@@ -656,6 +454,8 @@ if hasattr(st.session_state, 'comment_data'):
 
 
     # ---------------------------------------------------------------- 독자들이 서비스를 이용하는 시간대 ---------------------------------------------------------------- #
+    
+    
     with st.container():
         
         # 시간(hour) 정보를 추출 하여 집계(count)
@@ -711,6 +511,8 @@ if hasattr(st.session_state, 'comment_data'):
 
 
     # -------------------------------------------------------------- ltv 산출하기 -------------------------------------------------------------------------------------- #
+   
+    
     with st.container():
         
         st.header('🏅 LTV 활용하기')
@@ -1055,6 +857,9 @@ if hasattr(st.session_state, 'comment_data'):
 
 
     # -------------------------------------------------------------- 프로모션을 진행할 우선순위 독자 정하기 ------------------------------------------------------------- #            
+   
+    
+    
     with st.container():
         st.subheader('🎁 프로모션을 진행할 우선순위 독자')
         st.markdown(''' 
