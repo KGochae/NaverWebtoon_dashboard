@@ -4,7 +4,7 @@
 # NaverWebtoon_dashboard
 * 평소에 즐겨보는 웹툰 !! 지발작가님의 '무직 백수 계백순'의 성과지표 대시보드를 만들어 보았습니다!
 *  👉🏻 💻[대시보드](https://n-webtoon.streamlit.app/) 구경가기
-
+* 더 자세한 생각이 담긴 글은 해당 [시리즈](https://velog.io/@liveandletlive/series/naver-webtoon-dashboard)를 읽어주시면 감사하겠습니다🙇🏻‍♂️!! 
 
 ## 프로젝트 목표
 
