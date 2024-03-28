@@ -15,8 +15,9 @@
 │ └── thumbnail.png
 ├── .README.md
 ├── requirements.txt
-├── webtoon.css
-└── webtoon_main.py ---------- # dashboard main # 데이터 수집 및 전처리 
+├── scraping.py -------------- # 웹툰 데이터 스크래핑
+├── webtoon.css -------------- # 일부 CSS 
+└── webtoon_main.py ---------- # dashboard main # 데이터 전처리, 모델링, 대시보드 
 ```
 
 ## 프로젝트 목표
