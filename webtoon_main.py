@@ -1361,7 +1361,23 @@ if hasattr(st.session_state, 'comment_data'):
                                         ] 
                                         ,key="item_4",sx={"background-color" : "#F0F2F6", "background-size" : "cover","borderRadius": '20px'})
 
+                expander = st.expander('TOP3 Cookie 에피소드 특징')
+                with expander:                                            
+                        st.markdown('''
 
+                                ##### ① 장르 반전
+                                가장 높은 cookie 점수를 달성한 매너리즘 에피소드의 경우 해당 웹툰의 '1부 마무리'라는 이벤트의 영향도 있지만 
+                                그 동안 단순히 가벼운 개그물로 보아왔던 작품안에서 **'진지함' '감동' 이라는 장르의 반전**을 추가하면서 독자들에게 큰 인상을 준것을 알 수 있습니다.
+                                
+                                ##### ② 서비스신
+                                무직백수 계백순 웹툰의 경우 **작화, 캐릭터가 예쁘다**는 큰 매력 포인트가 있습니다. 특히, 78화: 초대(1)의 에피소드의 경우 이를 극대화 하는 서비스 장면이 추가 되면서 독자들의 큰 반응을 이끈것으로 보입니다.
+                                    
+                                ##### ③ 그냥 웃기다.
+                                이 외에 '개그' 장르 답게 **독자들의 웃음 코드**를 잘 살리는 에피소드의 경우 독자들의 반응이 좋은것을 볼 수 있습니다.
+
+                                ''')
+
+        
 
             # 실험소
             with col2:
@@ -1377,6 +1393,7 @@ if hasattr(st.session_state, 'comment_data'):
                          ''')
 
 
+                # 긴 에피소드의 제목별로 group 하기 위한 전처리
                 # 제목 형식에 ' : ' 를 기준으로 분리
                 # \s* 공백 \(\d+\) 괄호안의 숫자 제거
                 cookie_by_ep['title'] = cookie_by_ep['episode'].apply(lambda x: re.sub(r'\s*\(\d+\)$', '', x.split(':')[1]).strip()) 
