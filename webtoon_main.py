@@ -1023,6 +1023,8 @@ if hasattr(st.session_state, 'comment_data'):
                 total_cookie = pd.NamedAgg(column='cookie', aggfunc='sum')            
             ).reset_index().sort_values(by=['upload_at'])
 
+            # 이동평균값 확인 (쿠키 사용량이 증가하는 추세인지 확인)
+            cookie_by_ep['moving_average'] = cookie_by_ep['total_cookie'].rolling(window=14).mean()
 
             # 평균 쿠키
             mean_cookie = round(cookie_by_ep['total_cookie'].mean())
@@ -1048,6 +1050,10 @@ if hasattr(st.session_state, 'comment_data'):
             # 쿠키 사용 차트, 에피소드 명예의 전당
             with col1:
                 st.markdown('''#### 📈 Cookie Chart''')
+
+                expander = st.expander('Cookie 이동평균선 (5일)')
+                with expander:                                            
+                    st.line_chart(cookie_by_ep['moving_average'])
 
                 with elements("cookie chart"):
                             layout = [
