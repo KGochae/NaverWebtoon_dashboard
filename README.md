@@ -11,6 +11,8 @@
 ```bash
 ├── 📁.streamlit
 | └── config.toml 
+├── 📁 PPT요약
+│ └── PDF 요약본
 ├── 📁 img
 │ └── thumbnail.png
 ├── .README.md
