@@ -3,7 +3,7 @@
 
 # NaverWebtoon_dashboard
 * 평소에 즐겨보는 웹툰 !! 지발작가님의 '무직 백수 계백순'의 성과지표 대시보드를 만들어 보았습니다! 👉🏻 💻[대시보드](https://n-webtoon.streamlit.app/) 구경가기
-* 👉🏻 정리된 요약본은 [PPT요약 디렉토리](https://github.com/KGochae/NaverWebtoon_dashboard/blob/main/PPT%EC%9A%94%EC%95%BD/%EC%9B%B9%ED%88%B0%20%EC%84%B1%EA%B3%BC%EC%A7%80%ED%91%9C%20%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C%20%EB%B0%8F%20%EB%B6%84%EC%84%9D.pdf)를 참고해주세요!
+* 👉🏻 자세한 요약본은 [PPT요약 디렉토리](https://github.com/KGochae/NaverWebtoon_dashboard/blob/c300021e16a90d4e265d17c079efc1c2cc572a45/PPT%EC%9A%94%EC%95%BD/%EC%9B%B9%ED%88%B0%20%EC%84%B1%EA%B3%BC%EC%A7%80%ED%91%9C%20%EB%B6%84%EC%84%9D%20%EB%B0%8F%20%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C_%EC%9A%94%EC%95%BD%EC%9A%A9.pdf)를 참고해주세요!
 * 이 외에 약간의 TMI가 담긴 글은 해당 [시리즈](https://velog.io/@liveandletlive/series/naver-webtoon-dashboard)를 읽어주시면 감사하겠습니다🙇🏻‍♂️!! 
 
 ## 디렉토리 
