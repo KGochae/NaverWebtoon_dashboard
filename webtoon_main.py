@@ -791,8 +791,18 @@ if hasattr(st.session_state, 'comment_data'):
                 
 
                 st.write(final_df)
-                st.download_button("Press to Download")
-
+                
+            @st.cache_data
+            def convert_df(df):
+               return df.to_csv(index=False).encode('utf-8')
+                    
+            csv = convert_df(final_df)                
+            st.download_button(
+               "Press to Download",
+               csv,
+               "file.csv",
+               key='download-csv'
+            )
 
 
 
