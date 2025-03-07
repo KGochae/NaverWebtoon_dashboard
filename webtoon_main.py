@@ -88,6 +88,10 @@ main_bucket = 'naver_webtoon'
 data_folder = ['baeksoon/user_id/', 'baeksoon/main_data/']
 
 
+@st.cache_data # 테이블 다운받기
+def convert_df(df):
+   return df.to_csv(index=False).encode('utf-8')
+        
 
 def load_data(data_folder):
     client = storage.Client(credentials=credentials)
@@ -132,7 +136,6 @@ if hasattr(st.session_state, 'main_data'):
 if hasattr(st.session_state, 'comment_data'):
     comment_data = st.session_state.comment_data
 
-
     # 이벤트가 실행될 때마다 전처리 코드들이 실행되지 않게 cache_resource 
     @st.cache_resource
     def preprocessing (comment_data):
@@ -171,6 +174,9 @@ if hasattr(st.session_state, 'comment_data'):
     comment_data, dau, wau, mau = preprocessing(comment_data)
 
     unique_user  = len(comment_data['user_id'].unique())  # 댓글을 담긴 유니크한 유저
+    
+    csv = convert_df(comment_data)                
+    st.download_button("Download CSV", csv, "file.csv", key='download-csv')
 
 
     # ---------------------------------------------------------------- DAU, WAU, MAU활성화 유저 지표  ---------------------------------------------------------------- #
@@ -792,17 +798,9 @@ if hasattr(st.session_state, 'comment_data'):
 
                 st.write(final_df)
                 
-            @st.cache_data
-            def convert_df(df):
-               return df.to_csv(index=False).encode('utf-8')
                     
-            csv = convert_df(final_df)                
-            st.download_button(
-               "Download CSV",
-               csv,
-               "file.csv",
-               key='download-csv'
-            )
+            # csv = convert_df(final_df)                
+            # st.download_button("Download CSV", csv, "file.csv", key='download-csv')
 
 
 
