@@ -173,8 +173,6 @@ if hasattr(st.session_state, 'comment_data'):
     unique_user  = len(comment_data['user_id'].unique())  # 댓글을 담긴 유니크한 유저
 
 
-
-
     # ---------------------------------------------------------------- DAU, WAU, MAU활성화 유저 지표  ---------------------------------------------------------------- #
 
     with st.container():
@@ -185,8 +183,15 @@ if hasattr(st.session_state, 'comment_data'):
                     에피소드별 남겨진 댓글의 아이디를 기준으로 고유 유저수를 집계 했습니다🫡!일부 필터링된 '닉네임(id***)' 형태이며 같다면 동일 유저로 판단했습니다.                      
                     ''')
 
-        
 
+        csv = convert_for_download(comment_data)
+        st.download_button(
+                            label="Download CSV",
+                            data=csv,
+                            file_name="comment_data.csv")    
+
+        st.write(comment_data)
+        
         max_date = max(comment_data['comment_date'].dt.date) 
         min_date = min(comment_data['comment_date'].dt.date)
 
