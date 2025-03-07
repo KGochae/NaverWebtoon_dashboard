@@ -1006,8 +1006,8 @@ if hasattr(st.session_state, 'comment_data'):
             st.subheader('🍪 Episode By Cookie')
             st.caption(''' 쿠키사용량이 높았던 에피소드의 특징은 무엇일까요? 에피소드별(x:업로드된 날짜) 쿠키 사용량을 시각화하여 가장 가치가 높았던 에피소드를 찾아보고 독자들의 니즈를 파악해보았습니다.''')    
 
-            csv = convert_df(ltv_df)                
-            st.download_button("Download CSV", csv, "ltv_df.csv", key='download-csv')
+            # csv = convert_df(ltv_df)                
+            # st.download_button("Download CSV", csv, "ltv_df.csv", key='download-csv')
 
             cookie_by_ep = ltv_df.groupby(['chapter','episode','upload_at']).agg(
                 total_cookie = pd.NamedAgg(column='cookie', aggfunc='sum')            
