@@ -184,10 +184,9 @@ if hasattr(st.session_state, 'comment_data'):
                     ''')
 
 
-        csv = convert_for_download(comment_data)
         st.download_button(
                             label="Download CSV",
-                            data=csv,
+                            data=comment_data,
                             file_name="comment_data.csv")    
 
         st.write(comment_data)
