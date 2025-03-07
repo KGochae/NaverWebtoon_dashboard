@@ -791,7 +791,12 @@ if hasattr(st.session_state, 'comment_data'):
                 
 
                 st.write(final_df)
-                st.download_button(label='Download_CSV', data = final_df, file_name = 'user_ltv.csv')
+                st.download_button(
+                                   "Press to Download",
+                                   final_df,
+                                   "final_df.csv",
+                                   key='download-csv'
+                                )
 
 
             # FRML 차트
