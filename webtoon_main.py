@@ -791,12 +791,9 @@ if hasattr(st.session_state, 'comment_data'):
                 
 
                 st.write(final_df)
-                st.download_button(
-                                   "Press to Download",
-                                   final_df,
-                                   "final_df.csv",
-                                   key='download-csv'
-                                )
+                st.download_button("Press to Download")
+
+
 
 
             # FRML 차트
@@ -1440,6 +1437,5 @@ if hasattr(st.session_state, 'comment_data'):
 
                              
                                                          ''')
- 
 
  
