@@ -176,7 +176,7 @@ if hasattr(st.session_state, 'comment_data'):
     # ---------------------------------------------------------------- DAU, WAU, MAU활성화 유저 지표  ---------------------------------------------------------------- #
 
     with st.container():
-        st.write(comment_data.head())
+        # st.write(comment_data.head())
         st.header(''' 
                 Activation User  
                 ''')
@@ -791,6 +791,7 @@ if hasattr(st.session_state, 'comment_data'):
                 
 
                 st.write(final_df)
+                st.download_button(label='Download_CSV', data = final_df, file_name = 'user_ltv.csv')
 
 
             # FRML 차트
