@@ -798,7 +798,7 @@ if hasattr(st.session_state, 'comment_data'):
                     
             csv = convert_df(final_df)                
             st.download_button(
-               "Press to Download",
+               "Download CSV",
                csv,
                "file.csv",
                key='download-csv'
