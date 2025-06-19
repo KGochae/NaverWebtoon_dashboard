@@ -1,6 +1,7 @@
 
 -- episode 정보가 들어있는 table 
--- upload_date 데이터 값 (20.06.01)을 %y-%m-%d 형태(20-06-01) date 타입으로 전처리  
+-- upload_date 데이터 값이 string 타입 ->  date 타입으로 전처리  
+
 with ep as (
 SELECT title
       , episode
@@ -37,7 +38,7 @@ FROM (SELECT C.episode
             , C.comment_date
             , C.comment_like
             , E.upload_date
-            , CASE WHEN C.comment_date < E.upload_date THEN 500 ELSE 0 END AS price --
+            , CASE WHEN C.comment_date < E.upload_date THEN 1200 ELSE 0 END AS price --
       FROM comment C
       JOIN ep E ON C.episode = E.episode ) a 
 GROUP BY user_id
